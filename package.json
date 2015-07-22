@@ -1,0 +1,45 @@
+{
+  "name": "available",
+  "description": "Scan npm for available package names",
+  "version": "1.0.0",
+  "author": {
+    "name": "Feross Aboukhadijeh",
+    "email": "feross@feross.org",
+    "url": "http://feross.org/"
+  },
+  "bin": {
+    "available": "index.js"
+  },
+  "bugs": {
+    "url": "https://github.com/feross/available/issues"
+  },
+  "dependencies": {
+    "run-parallel-limit": "^1.0.1",
+    "simple-get": "^1.3.3"
+  },
+  "devDependencies": {
+    "standard": "^4.5.4"
+  },
+  "homepage": "https://github.com/feross/available",
+  "keywords": [
+    "scan npm",
+    "scan",
+    "npm",
+    "package names",
+    "name",
+    "find package names",
+    "available",
+    "available names",
+    "available package names",
+    "npm package names"
+  ],
+  "license": "MIT",
+  "main": "index.js",
+  "repository": {
+    "type": "git",
+    "url": "git://github.com/feross/available.git"
+  },
+  "scripts": {
+    "test": "standard"
+  }
+}
