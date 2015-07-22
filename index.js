@@ -1,10 +1,13 @@
 var fs = require('fs')
 var get = require('simple-get')
 var parallelLimit = require('run-parallel-limit')
+var path = require('path')
 
-var WORDS = fs.readFileSync('./dictionary.txt').toString().split('\n')
+var LIMIT = 10
 
-var LIMIT = 5
+var WORDS = fs.readFileSync(path.join(__dirname, 'dictionary.txt'))
+  .toString()
+  .split('\n')
 
 var tasks = WORDS.map(function (word) {
   return function (cb) {
