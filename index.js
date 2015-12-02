@@ -14,7 +14,7 @@ var words = fs.readFileSync(path.join(__dirname, 'dictionary.txt'))
 
 words = difference(words, packageNames)
 
-function offlineResult() {
+function offlineResult () {
   console.error('OFFLINE MODE – printing list of *LIKELY* available package names...')
   words.forEach(function (word) {
     console.log(word)
@@ -22,7 +22,8 @@ function offlineResult() {
 }
 
 if (process.argv.slice(2).join(' ').match('--offline')) {
-  return offlineResult()
+  offlineResult()
+  process.exit(0)
 }
 
 connectivity(function (online) {
