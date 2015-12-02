@@ -17,12 +17,20 @@ npm install -g available
 
 ## usage
 
+Stream live results from the npm registry:
+
 ```bash
 $ available
 your
 was
 our
 ...
+```
+
+List cached results (faster but out of date):
+
+```bash
+$ available --offline
 ```
 
 ## license
