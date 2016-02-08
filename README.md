@@ -1,10 +1,10 @@
 # available [![travis][travis-image]][travis-url] [![npm][npm-image]][npm-url] [![downloads][downloads-image]][downloads-url]
 
-[travis-image]: https://img.shields.io/travis/feross/available.svg?style=flat
+[travis-image]: https://img.shields.io/travis/feross/available/master.svg
 [travis-url]: https://travis-ci.org/feross/available
-[npm-image]: https://img.shields.io/npm/v/available.svg?style=flat
+[npm-image]: https://img.shields.io/npm/v/available.svg
 [npm-url]: https://npmjs.org/package/available
-[downloads-image]: https://img.shields.io/npm/dm/available.svg?style=flat
+[downloads-image]: https://img.shields.io/npm/dm/available.svg
 [downloads-url]: https://npmjs.org/package/available
 
 ### Scan npm for available package names
