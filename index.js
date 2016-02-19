@@ -34,6 +34,7 @@ connectivity(function (online) {
       get('https://registry.npmjs.com/' + word, function (err, res) {
         if (err) return cb(err)
         if (res.statusCode === 404) console.log(word)
+        res.resume() // consume the stream
         cb(null)
       })
     }
