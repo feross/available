@@ -21,7 +21,7 @@
     "simple-get": "^2.0.0"
   },
   "devDependencies": {
-    "standard": "^6.0.5"
+    "standard": "^7.0.0"
   },
   "homepage": "https://github.com/feross/available",
   "keywords": [
