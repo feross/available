@@ -31,7 +31,7 @@ connectivity(function (online) {
 
   var tasks = words.map(function (word) {
     return function (cb) {
-      get('https://registry.npmjs.com/' + word, function (err, res) {
+      get.head('https://registry.npmjs.com/' + word, function (err, res) {
         if (err) return cb(err)
         if (res.statusCode === 404) console.log(word)
         res.resume() // consume the stream
