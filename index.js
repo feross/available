@@ -35,7 +35,7 @@ function checkName (name, opts, next) {
     const thesaurus = require('thesaurus')
     const relatedWords = thesaurus
       .find(name)
-      .map(name => name.replace(/ /g, '-'))
+      .map(name => name.replace(/ /g, '-').toLowerCase())
       .filter(name => validateName(name).validForNewPackages)
     desiredNames.push(...relatedWords)
   }
