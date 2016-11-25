@@ -45,12 +45,31 @@ Flags:
 
 ### api
 
-#### available.getNames(online, next)
+#### `available.getNames(opts, next)`
 
-Get available package names from npm. If `online` is `true`, verify that the names
-are actually available. If `online` is `false`, then a local
+Get available package names from npm.
+
+If `opts.online` is `true`, verify that the
+names are actually available. Otherwise, a local
 [package name database](https://npmjs.com/package/all-the-package-names) is used,
 which may be slightly out-of-date.
+
+`next(err, name)` is called each time an available package is found. This allows
+for "streaming" the possible names from the registry. If `err` is an `Error`, then
+there was a problem and `next` will not be called again. `name` is the available
+package name.
+
+#### `available.checkName(name, opts, next)`
+
+Check if a specific `name` is available on npm.
+
+If `opts.online` is `true`, verify that the
+names are actually available. Otherwise, a local
+[package name database](https://npmjs.com/package/all-the-package-names) is used,
+which may be slightly out-of-date.
+
+If `opts.related` is `true`, then this will search for related module names using
+a thesaurus.
 
 `next(err, name)` is called each time an available package is found. This allows
 for "streaming" the possible names from the registry. If `err` is an `Error`, then
