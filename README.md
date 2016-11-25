@@ -12,12 +12,14 @@
 ## install
 
 ```
-npm install -g available
+npm install available -g
 ```
 
 ## usage
 
-Stream live results from the npm registry:
+### cli
+
+Get available names from the npm registry:
 
 ```bash
 $ available
@@ -27,11 +29,33 @@ our
 ...
 ```
 
-List cached results (faster but out of date):
+Full options list:
 
-```bash
-$ available --offline
 ```
+Usage:
+    available <options>
+
+    Scan npm for available package names.
+
+Flags:
+    -o, --offline    Force offline mode. (Does not verify names are actually available.)
+    -v, --version    Show current version
+    -h, --help       Show usage information
+```
+
+### api
+
+#### available.getNames(online, next)
+
+Get available package names from npm. If `online` is `true`, verify that the names
+are actually available. If `online` is `false`, then a local
+[package name database](https://npmjs.com/package/all-the-package-names) is used,
+which may be slightly out-of-date.
+
+`next(err, name)` is called each time an available package is found. This allows
+for "streaming" the possible names from the registry. If `err` is an `Error`, then
+there was a problem and `next` will not be called again. `name` is the available
+package name.
 
 ## license
 

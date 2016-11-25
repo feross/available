@@ -1,39 +1,37 @@
-var connectivity = require('connectivity')
-var difference = require('lodash.difference')
-var fs = require('fs')
-var get = require('simple-get')
-var packageNames = require('all-the-package-names')
-var parallelLimit = require('run-parallel-limit')
-var path = require('path')
+module.exports = {
+  getNames
+}
 
-var LIMIT = 10
+const difference = require('lodash.difference')
+const fs = require('fs')
+const get = require('simple-get')
+const packageNames = require('all-the-package-names')
+const parallelLimit = require('run-parallel-limit')
+const path = require('path')
 
-var words = fs.readFileSync(path.join(__dirname, 'dictionary.txt'))
+const LIMIT = 10
+const REGISTRY_URL = 'https://registry.npmjs.com/'
+
+const DICTIONARY = fs.readFileSync(path.join(__dirname, 'dictionary.txt'))
   .toString()
   .split('\n')
 
-words = difference(words, packageNames)
+const POSSIBLE_NAMES = difference(DICTIONARY, packageNames)
 
-function offlineResult () {
-  console.error('OFFLINE MODE – printing list of *LIKELY* available package names...')
-  words.forEach(function (word) {
-    console.log(word)
-  })
+function getNames (online, next) {
+  if (online) {
+    verifyAvailable(POSSIBLE_NAMES, next)
+  } else {
+    POSSIBLE_NAMES.forEach(name => next(null, name))
+  }
 }
 
-if (process.argv.slice(2).join(' ').match('--offline')) {
-  offlineResult()
-  process.exit(0)
-}
-
-connectivity(function (online) {
-  if (!online) return offlineResult()
-
-  var tasks = words.map(function (word) {
+function verifyAvailable (names, next) {
+  const tasks = names.map(function (name) {
     return function (cb) {
-      get.head('https://registry.npmjs.com/' + word, function (err, res) {
+      get.head(REGISTRY_URL + name, function (err, res) {
         if (err) return cb(err)
-        if (res.statusCode === 404) console.log(word)
+        if (res.statusCode === 404) next(null, name)
         res.resume() // consume the stream
         cb(null)
       })
@@ -42,8 +40,8 @@ connectivity(function (online) {
 
   parallelLimit(tasks, LIMIT, function (err) {
     if (err) {
-      console.error(err.stack || err.message || err)
+      next(err)
       process.exit(1)
     }
   })
-})
+}
