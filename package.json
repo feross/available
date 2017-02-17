@@ -21,7 +21,7 @@
     "run-parallel-limit": "^1.0.1",
     "simple-get": "^2.2.2",
     "thesaurus": "0.0.0",
-    "validate-npm-package-name": "^2.2.2"
+    "validate-npm-package-name": "^3.0.0"
   },
   "devDependencies": {
     "standard": "*"
