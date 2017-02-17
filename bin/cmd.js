@@ -5,7 +5,7 @@ const connectivity = require('connectivity')
 const minimist = require('minimist')
 
 const argv = minimist(process.argv.slice(2), {
-  boolean: ['offline', 'version', 'help'],
+  boolean: ['related', 'offline', 'version', 'help'],
   alias: {
     o: 'offline',
     v: 'version',
