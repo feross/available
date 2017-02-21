@@ -33,12 +33,24 @@ Full options list:
 
 ```
 Usage:
-    available <options>
+    available [optional-name] <options>
 
     Scan npm for available package names.
 
+Examples:
+
+    Print lots of possible names:
+        available
+        available --offline
+
+    Check for a certain name:
+        available my-cool-name
+        available my-cool-name --related
+        available my-cool-name --offline
+
 Flags:
-    -o, --offline    Force offline mode. (Does not verify names are actually available.)
+    -r, --related    Search for related module names (Uses thesaurus)
+    -o, --offline    Force offline mode (Does not verify names are actually available)
     -v, --version    Show current version
     -h, --help       Show usage information
 ```
