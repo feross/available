@@ -62,7 +62,6 @@ function runGetNames (online) {
     console.error('OFFLINE MODE: Printing list of likely available names...')
   }
   available.getNames({online}, printName)
-  return
 }
 
 function runCheckName (name, online) {
