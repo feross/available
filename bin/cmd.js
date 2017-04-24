@@ -7,6 +7,7 @@ const minimist = require('minimist')
 const argv = minimist(process.argv.slice(2), {
   boolean: ['related', 'offline', 'version', 'help'],
   alias: {
+    r: 'related',
     o: 'offline',
     v: 'version',
     h: 'help'
