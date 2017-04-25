@@ -3,10 +3,12 @@
 const available = require('../')
 const connectivity = require('connectivity')
 const minimist = require('minimist')
+const pkg = require('../package.json')
 
 const argv = minimist(process.argv.slice(2), {
   boolean: ['related', 'offline', 'version', 'help'],
   alias: {
+    r: 'related',
     o: 'offline',
     v: 'version',
     h: 'help'
@@ -15,6 +17,8 @@ const argv = minimist(process.argv.slice(2), {
 
 if (argv.help) {
   runHelp()
+} else if (argv.version) {
+  runVersion()
 } else {
   if (argv.offline) { // Force offline mode
     run(false)
@@ -47,6 +51,10 @@ Flags:
     -v, --version    Show current version
     -h, --help       Show usage information
   `)
+}
+
+function runVersion () {
+  console.log(pkg.version)
 }
 
 function run (online) {
