@@ -24,7 +24,7 @@
     "validate-npm-package-name": "^3.0.0"
   },
   "devDependencies": {
-    "standard": "*"
+    "standard": "11.0.1"
   },
   "homepage": "https://github.com/feross/available",
   "keywords": [
