@@ -20,7 +20,7 @@
     "minimist": "^1.2.0",
     "run-parallel-limit": "^1.0.1",
     "simple-get": "^3.0.0",
-    "thesaurus": "0.0.0",
+    "thesaurus": "0.0.1",
     "validate-npm-package-name": "^3.0.0"
   },
   "devDependencies": {
