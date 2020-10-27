@@ -1,3 +1,4 @@
+/*! available. MIT License. Feross Aboukhadijeh <https://feross.org/opensource> */
 module.exports = {
   getNames,
   checkName
